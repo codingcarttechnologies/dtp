@@ -1,0 +1,57 @@
+<template #content let-c="close" let-d="dismiss">
+  <form #exportForm="ngForm" novalidate>
+    <div class="modal-header">
+      <button type="button" class="close" aria-label="Close" (click)="d()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h3 class="modal-title">Export Sensor Data</h3>
+    </div>
+
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group" [ngClass]="{'has-error': from.errors}">
+              <label for="from">From</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Start Date" name="from" [(ngModel)]="dateFrom" #from="ngModel" ngbDatepicker #dfrom="ngbDatepicker">
+                <div class="input-group-addon" (click)="dfrom.toggle()" style="width: 10%">
+                  <img src="/assets/images/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" [ngClass]="{'has-error': to.errors}">
+              <label for="to">To</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="End Date" name="to" [(ngModel)]="dateTo" #to="ngModel" ngbDatepicker #dto="ngbDatepicker">
+                <div class="input-group-addon" (click)="dto.toggle()"  style="width: 10%">
+                  <img src="/assets/images/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-4" *ngFor="let sensor of device.sensors.linkedSensors; let ndx = index">
+            <div class="form-group">
+              <label>
+                <input type="checkbox" name="temp{{ndx}}" [(ngModel)]="selectedSensors[ndx]" value="true">
+                  {{sensor.name}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="c()">Cancel</button>
+      <button type="button" class="btn btn-primary" [disabled]="!exportForm.form.valid" (click)="export()">Export</button>
+    </div>
+  </form>
+</template>

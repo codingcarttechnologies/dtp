@@ -1,0 +1,58 @@
+<login-modal #loginModal></login-modal>
+<edit-user-profile-modal #registerModal></edit-user-profile-modal>
+<change-password-modal #changePasswordModal></change-password-modal>
+<forgot-password-modal #forgotPasswordModal></forgot-password-modal>
+<reset-password-modal #resetPasswordModal></reset-password-modal>
+<nav class="navbar navbar-default" role="navigation">
+    <h3 class="st-title">
+    <a *ngIf="!authService.isAuthenticated" href="/">Dexen Telemetry</a>
+    <a *ngIf="authService.isAuthenticated" href="/dashboard">Dexen Telemetry</a>
+    </h3>
+    <ul *ngIf="!landingpath" class="nav navbar-nav pull-left">
+      <li><a href="/users">Users</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav pull-right">
+      <li *ngIf="authService.isAuthenticated" ngbDropdown>
+        <img src="{{gravatar}}" style="width: 40px; border-radius: 50%" />
+        <a style="display: inline-block" ngbDropdownToggle>{{username}}</a>
+        <div class="dropdown-menu col-md-12">
+          <button class="dropdown-item" (click)="editProfile()">Edit Profile</button>
+          <button class="dropdown-item" (click)="changePassword()">Change Password</button>
+          <hr>
+          <button class="dropdown-item" (click)="logout()">Logout</button>
+        </div>
+      </li>
+      <li *ngIf="!authService.isAuthenticated">
+        <a style="display: inline-block" (click)="login()"><span class="glyphicon glyphicon glyphicon-lock"></span> Log in</a>
+      </li>
+
+      <li *ngIf="landingpath"><a href="#contact">Contact Us</a></li>
+      <li *ngIf="landingpath"><a>Demo</a></li>
+      <li *ngIf="landingpath"><a href="#how_it_works">How it Works</a></li>
+      <li *ngIf="landingpath"><a href="#services">Services</a></li>
+      <span class="glyphicon glyphicon-menu-hamburger pull-right" onclick="mobileMenu()"></span>
+    </ul>
+  </nav>
+  <div id="mobileMenu">
+    <ul>
+      <li *ngIf="authService.isAuthenticated" ngbDropdown>
+        <img src="{{gravatar}}" style="width: 40px; border-radius: 50%" />
+        <a style="display: inline-block" ngbDropdownToggle>{{username}}</a>
+        <div class="dropdown-menu col-md-12">
+          <button class="dropdown-item" (click)="editProfile()">Edit Profile</button>
+          <button class="dropdown-item" (click)="changePassword()">Change Password</button>
+          <hr>
+          <button class="dropdown-item" (click)="logout()">Logout</button>
+        </div>
+      </li>
+      <li *ngIf="!authService.isAuthenticated">
+        <a style="display: inline-block" (click)="login()"><span class="glyphicon glyphicon glyphicon-lock"></span> Log in</a>
+      </li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a>Demo</a></li>
+      <li><a href="#how_it_works">How it Works</a></li>
+      <li><a href="#services">Services</a></li>
+    </ul>
+  </div>
+

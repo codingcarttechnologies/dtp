@@ -1,0 +1,16 @@
+import { OemModel } from "../telemetry-services/models/oem.model";
+import {packageChunkSort} from "angular-cli/utilities/package-chunk-sort";
+
+export class UserModel {
+  public password: string;
+  public confirmPassword: string;
+
+  public oem: OemModel;
+
+  constructor(){
+    this.oem = new OemModel();
+
+    this.password = '';
+    this.confirmPassword = '';
+  }
+}

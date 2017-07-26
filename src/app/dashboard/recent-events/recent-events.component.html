@@ -1,0 +1,22 @@
+<h4 class="panel-title">RECENT EVENTS</h4>
+
+<event-details-modal #modal></event-details-modal>
+<loading [while]="events == undefined"></loading>
+<div class="table-responsive recent-table" *ngIf="events != undefined && events.length > 0">
+  <table class="table table-bordered card-panel">
+    <tr *ngFor="let event of events" (click)="showEventDetails(event)">
+      <td class="container-fluid no-padding">
+        <div class="col-md-1" style="font-size: 1.3em">{{formatValue(event.value)}} {{event.unit}}</div>
+        <div class="col-md-1"><img src="/assets/images/{{event.sensorType}}.png"/></div>
+        <div class="col-md-3" style="padding-left: 0"><b>{{event.name}}</b></div>
+        <div class="col-md-3" style="padding-right: 0; padding-left: 0">{{event.deviceName}}</div>
+        <div class="col-md-4">
+          {{event.address.street1}}<br>{{event.address.city}}, {{event.address.state}}
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="table-responsive recent-table" *ngIf="events != undefined && events.length == 0">
+  <h5>No recent events</h5>
+</div>

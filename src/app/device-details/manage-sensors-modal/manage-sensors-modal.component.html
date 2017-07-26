@@ -1,0 +1,27 @@
+<template #content let-c="close" let-d="dismiss">
+  <form #sensorsForm="ngForm" novalidate>
+    <div class="modal-header">
+      <button type="button" class="close" aria-label="Close" (click)="d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+      <h3 class="modal-title">Configure Sensors</h3>
+    </div>
+
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <h4>Choose Sensors</h4>
+          </div>
+        </div>
+
+        <edit-sensor-network [sensors]="sensors"></edit-sensor-network>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="c()">Close</button>
+      <button type="button" class="btn btn-primary" [disabled]="!sensorsForm.form.valid" (click)="save()">Save</button>
+    </div>
+  </form>
+</template>

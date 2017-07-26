@@ -1,0 +1,19 @@
+<div class="inline-edit">
+    <span [hidden]="!isDisplay">
+        <span title="Edit" (click)="beginEdit(editText)" style="color:#428bca; border-bottom: dashed 1px #428bca;">{{ text }}</span>
+    </span>
+    <span [hidden]="isDisplay">
+	    <div class="row">
+	        <div class="col-sm-8">
+		        <select #editText [(ngModel)]="text" (keyup.enter)="editDone(editText.value)" class="form-control">
+		          <option value="noption" disabled>Selected option</option>
+				  <option *ngFor="let org of organization" [ngValue]="org">{{org}}</option>
+				</select>
+			</div>
+			<div class="col-sm-4">
+		        <button class="btn btn-primary" (click)="editDone(editText.value)" type="button"><span class="glyphicon glyphicon-ok"></span></button>
+		        <button class="btn btn-default" (click)="editCancel(editText.value)" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+		    </div>
+	    </div>
+    </span>
+</div>

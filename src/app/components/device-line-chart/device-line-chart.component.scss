@@ -1,0 +1,9 @@
+.nvd3.nv-stackedAreaChart {
+	g rect {
+		opacity: 0 !important;
+	}
+
+	.nv-stackedWrap.nvd3-svg {
+		opacity: 0.8; 
+	}
+}

@@ -1,0 +1,86 @@
+<div id="main" class="container">
+  <edit-device-modal #editDeviceModal></edit-device-modal>
+  <manage-sensors-modal #sensorsModal></manage-sensors-modal>
+  <manage-rules-modal #rulesModal></manage-rules-modal>
+  <export-modal #exportModal></export-modal>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="clearfix" id="recentEvents">
+        <div class="panel-heading clearfix no-padding">
+          <h3 class="panel-title pull-left">{{device.modelName}}</h3>
+          <div class="pull-right">
+            <div class="form-group pull-right">
+              <div class="input-group">
+                <a class="btn btn-primary btn-sm btn-margin" (click)="editDevice()">Edit Device</a>
+                <a class="btn btn-primary btn-sm btn-margin" (click)="manageSensors()">Sensors</a>
+                <a class="btn btn-primary btn-sm btn-margin" (click)="manageRules()">Rules</a>
+                <a class="btn btn-primary btn-sm btn-margin" (click)="export()">Export</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <recent-events class="clearfix" id="recentEventsd" [events]="recentEvents"></recent-events>
+
+        <h4 class="panel-title subtitles-devices">Sensors</h4>
+        <loading [while]="(device.sensors.linkedSensors)?.length == 0"></loading>
+        <div *ngIf="(device.sensors.linkedSensors)?.length != 0" class="panel-body no-padding">
+          <div class="col-md-12 no-padding">
+            <sensor *ngFor="let sensor of device.sensors.linkedSensors" [sensor]="sensor"></sensor>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h4 class="panel-title" style="padding: 1em auto">OVERVIEW</h4>
+      <div class="col-md-12 panel card-panel">
+        <div class="panel-body">
+          <div id="devicePicture">
+            <img src="{{device.imageURL}}" alt="{{device.modelName}}" style="padding: 10px" />
+          </div>
+          <div class="subtitles-devices padding-text-sections"><strong>{{device.modelNumber}}</strong></div>
+          <div class="padding-text-sections desc">{{device.modelName}}</div>
+          <div class="padding-text-sections"><i class="fa fa-file" aria-hidden="true"></i> <a target="_blank" href="/assets/files/Manual.pdf">Users Manual</a></div>   <!-- TODO: where do these come from? -->
+          <div class="padding-text-sections"><i class="fa fa-file" aria-hidden="true"></i> <a target="_blank" href="/assets/files/Manual.pdf">Guarantee</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-12 panel card-panel">
+        <div class="panel-body">
+          <div style="font-size: 1.2em"><b>{{device.organization}}</b></div>
+          <hr>
+          <div><i class="fa fa-user" aria-hidden="true"></i> &nbsp; <b>{{device.name}}</b></div>
+          <div><i class="fa fa-envelope" aria-hidden="true"></i> &nbsp; {{device.email}}</div>
+          <div><i class="fa fa-phone" aria-hidden="true"></i> &nbsp; {{device.phoneNumber}}</div>
+          <hr>
+          <div *ngIf="device.address">{{device.address.street1}}</div>
+          <div *ngIf="device.address && device.address.street2">{{device.address.street2}}</div>
+          <div *ngIf="device.address">{{device.address.zip}}</div>
+          <div *ngIf="device.address">{{device.address.city}}</div>
+          <div *ngIf="device.address">{{device.address.state}} - {{device.address.country}}</div>
+        </div>
+      </div>
+
+      <div class="col-md-12 panel card-panel">
+        <div class="panel-body">
+          <div id="technicians">      <!-- Can't be hardcoded; where does this information come from? -->
+            <div class="tech-card" *ngFor="let user of device.users">
+              <div class="techie"><img src="/assets/images/user.png" width="100" height="100" /></div>
+              <div class="techie-desc">
+                {{user.name}}
+                <div class="desc">BP Estate Manager</div>
+                <div class="desc">{{user.email}}</div>
+              </div>
+              <div style="clear: both"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="clear: both"></div>
+      <div class="col-md-12"></div>
+      <div class="col-md-12"></div>
+      <div class="col-md-12"></div>
+      <socket-state></socket-state>
+    </div>
+  </div>
+</div>

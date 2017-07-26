@@ -1,0 +1,40 @@
+<template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h3 class="modal-title">Manage System Profiles</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="col-md-12 text-centered">
+        <h3>What would you like to do?</h3>
+      </div>
+      <div class="col-md-12"> &nbsp; </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-4">
+        <div class="col-md-12">
+          <input type="text" class="form-control" placeholder="Enter New Profile Name" [(ngModel)]="newProfile">
+        </div>
+        <br><br>
+        <div class="col-md-12 text-centered"><button class="btn btn-primary" [disabled]="!newProfile || newProfile == ''" (click)="createNew()">Create New Device Profile</button></div>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-4">
+        <div class="col-md-12 text-centered">
+          <select name="profile" class="form-control" [(ngModel)]="selectedProfile">
+            <option *ngFor="let profile of profiles | async" [ngValue]="profile">{{profile.name}}</option>
+          </select>
+        </div>
+        <br><br>
+        <div class="col-md-12 text-centered"><button class="btn btn-primary" [disabled]="!selectedProfile || selectedProfile == ''" (click)="edit()">Edit Profile</button></div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="c()">Close</button>
+  </div>
+</template>

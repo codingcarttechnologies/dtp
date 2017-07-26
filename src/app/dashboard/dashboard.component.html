@@ -1,0 +1,18 @@
+<div class="dashboard">
+  <div id="main" class="container">
+    <div class="row">
+
+      <div class="col-md-8">
+      	<recent-events class="clearfix" id="recentEvents" [events]="recentEventData"></recent-events>
+        <device-overview (toggleFilteringOptions)="toggleSidenav()"></device-overview>
+      </div>
+
+      <div class="col-md-4" id="sideSec">
+      	<analytics></analytics>
+        <socket-state></socket-state>
+      </div>
+
+    </div>
+  </div>
+  <dashboard-sidenav></dashboard-sidenav>
+</div>

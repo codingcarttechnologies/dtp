@@ -1,0 +1,6 @@
+<div class="col-md-12 panel card-panel">
+  <div class="panel-body">
+    <span class="hero-number">{{(devices | async)?.length}}</span><span class="trailing-text"> Devices</span>
+    <chart (load)="saveInstance($event.context)" [options]="options_highchart"></chart>
+  </div>
+</div>

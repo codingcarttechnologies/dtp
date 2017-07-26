@@ -1,0 +1,36 @@
+<div class="subtitles-devices">
+  <h4 class="col-md-12 no-padding">{{title}}</h4>
+</div>
+<div class="col-md-12 no-padding">
+  <table class="table table-condensed card-panel device-table">
+    <tr>
+      <td>Device Name</td>
+      <td>Device Description</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+
+    <tr class="device-icons" *ngFor="let device of devices" (click)="showDevice(device.id)">
+      <td>
+        <div class="device-names semi-bold">{{device.modelName}}</div>
+      </td>
+      <td>
+        <span class="desc">{{device.modelNumber}} [{{device.serialNumber}}]</span>
+      </td>
+      <td>
+        <div *ngIf="device.setPoints && device.setPoints.length >= 1" [ngClass]="setPointColor(device.setPoints [0], device.measurements)">{{setPointValue(device.setPoints [0], device.measurements)}}</div>
+      </td>
+      <td>
+        <div *ngIf="device.setPoints && device.setPoints.length >= 2" [ngClass]="setPointColor(device.setPoints [1], device.measurements)">{{setPointValue(device.setPoints [1], device.measurements)}}</div>
+      </td>
+      <td>
+        <div *ngIf="device.setPoints && device.setPoints.length >= 3" [ngClass]="setPointColor(device.setPoints [2], device.measurements)">{{setPointValue(device.setPoints [2], device.measurements)}}</div>
+      </td>
+      <td>
+        <div *ngIf="device.setPoints && device.setPoints.length >= 4" [ngClass]="setPointColor(device.setPoints [3], device.measurements)">{{setPointValue(device.setPoints [3], device.measurements)}}</div>
+      </td>
+    </tr>
+  </table>
+</div>

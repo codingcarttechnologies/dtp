@@ -1,0 +1,48 @@
+<div class="subtitles-devices">
+  <h4 class="col-md-12 no-padding">{{title}}</h4>
+</div>
+<div class="col-md-6 no-padding" *ngFor="let device of devices">
+  <div class="add-padding">
+    <table class="table table-condensed card-panel device-icons" [ngClass]="{'device-error': device.deviceStatus == 'ERROR', 'device-inactive': device.deviceStatus == 'INACTIVE'}" (click)="showDevice(device.id)">
+      <tr>
+        <td colspan="3">
+          <div class="device-names semi-bold">{{device.organization}}</div>
+          <span class="desc next-line">{{device.modelName}}</span>
+        </td>
+        <td colspan="1">
+          <img src="/assets/images/{{device.systemType}}.png" class="device-img" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <!--TODO: refactor into separate component when rules are known-->
+          <div *ngIf="device.setPoints && device.setPoints.length >= 1">
+            <img src="{{setPointIcon(device.setPoints [0], device.measurements)}}" class="temp-img" />
+            <span class="oilNormal">{{setPointValue(device.setPoints [0], device.measurements)}}</span>
+          </div>
+          <div *ngIf="!(device.setPoints && device.setPoints.length >= 1)">
+            <img src="/assets/images/empty.png" class="temp-img" />
+          </div>
+        </td>
+        <td>
+          <div *ngIf="device.setPoints && device.setPoints.length >= 2">
+            <img src="{{setPointIcon(device.setPoints [1], device.measurements)}}" class="temp-img" />
+            <span class="oilNormal">{{setPointValue(device.setPoints [1], device.measurements)}}</span>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="device.setPoints && device.setPoints.length >= 3">
+            <img src="{{setPointIcon(device.setPoints [2], device.measurements)}}" class="temp-img" />
+            <span class="oilNormal">{{setPointValue(device.setPoints [2], device.measurements)}}</span>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="device.setPoints && device.setPoints.length >= 4">
+            <img src="{{setPointIcon(device.setPoints [3], device.measurements)}}" class="temp-img" />
+            <span class="oilNormal">{{setPointValue(device.setPoints [3], device.measurements)}}</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

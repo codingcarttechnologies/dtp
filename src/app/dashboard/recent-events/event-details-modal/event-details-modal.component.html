@@ -1,0 +1,32 @@
+<template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h3 class="modal-title">Event Details</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 field-label">Event</div>
+        <div class="col-sm-9">{{event.name}}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3 field-label">Description</div>
+        <div class="col-sm-9">{{event.description}}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3 field-label">Timestamp</div>
+        <div class="col-sm-9">{{event.timestamp}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="resetNotifications()">Reset notifications</button>
+    <button type="button" class="btn btn-primary" (click)="c()">Close</button>
+  </div>
+</template>

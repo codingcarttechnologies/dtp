@@ -1,0 +1,49 @@
+<template #content let-c="close" let-d="dismiss">
+  <calculation-modal #calculationModal></calculation-modal>
+  <set-point-modal #setPointModal></set-point-modal>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h3 class="modal-title">Manage Rules</h3>
+  </div>
+
+  <div class="modal-body" style="min-height: 400px">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8"><h4>Create Calculations</h4></div>
+        <div class="col-md-4"><span class="add-btn pull-right" (click)="addCalc()">Add</span></div>
+      </div>
+      <div>
+        <div *ngFor="let calculation of calculations" class="row bottom-line">
+        <div class="col-md-4">{{calculation.variableName}}</div>
+        <div class="col-md-5">{{calculation.expression}}</div>
+        <div class="col-md-1">{{calculation.unit}}</div>
+        <div class="col-md-2">
+          <span class="edit-btn pull-left" (click)="editCalc(calculation)">Edit</span> <span class="remove-btn pull-right" (click)="deleteCalc(calculation)">Remove</span>
+        </div>
+      </div>
+      </div>
+      <div class="row" style="margin-top: 20px">
+        <div class="col-md-8"><h4>Create Set Points</h4></div>
+        <div class="col-md-4"><span class="add-btn pull-right" (click)="addSetP()">Add</span></div>
+      </div>
+      <div *ngFor="let setP of setPoints" class="row bottom-line">
+        <div *ngFor="let condition of setP.conditions; let i = index" class="row cond-row">
+          <div class="col-md-3">{{condition.parameterName}}</div>
+          <div class="col-md-1">{{condition.comparisonOperator | comparisonOperator}}</div>
+          <div class="col-md-2">{{condition.limit}}</div>
+          <div *ngIf="i == 0" class="col-md-4">{{setP.warningMessage}}</div>
+          <div *ngIf="i == 0" class="col-md-2">
+            <span class="edit-btn pull-left" (click)="editSetP(setP)">Edit</span> <span class="remove-btn pull-right" (click)="deleteSetP(setP)">Remove</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="c()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>
+</template>

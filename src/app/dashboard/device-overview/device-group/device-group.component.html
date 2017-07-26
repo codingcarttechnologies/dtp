@@ -1,0 +1,6 @@
+﻿<div class="panel-body">
+  <div *ngFor="let deviceGroup of deviceGroups | async">
+    <device-grid *ngIf="!listView" [devices]="deviceGroup.devices" [title]="deviceGroup.title"></device-grid>
+    <device-list *ngIf="listView" [devices]="deviceGroup.devices" [title]="deviceGroup.title"></device-list>
+  </div>
+</div>

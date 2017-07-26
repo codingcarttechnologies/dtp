@@ -1,0 +1,232 @@
+<div *ngIf="!sensors.isNetwork">
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <input type="checkbox" name="temp1" [(ngModel)]="sensors.network[0].sensorId" value="Port 1">
+          {{sensors.network[0].metricName}}
+      </label>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Enter Sensor Name" name="temp1name" [(ngModel)]="sensors.network[0].name"
+             #temp1name="ngModel" (change)="autocheck(0)">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" name="temp1unit" [(ngModel)]="sensors.network[0].unit" #temp1unit="ngModel">
+        <option value="F">F</option>
+        <option value="C">C</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <input type="checkbox" name="temp2" [(ngModel)]="sensors.network[1].sensorId" value="Port 2">
+        {{sensors.network[1].metricName}}
+      </label>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Enter Sensor Name" name="temp2name" [(ngModel)]="sensors.network[1].name"
+             #temp2name="ngModel" (change)="autocheck(1)">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" name="temp2unit" [(ngModel)]="sensors.network[1].unit" #temp2unit="ngModel">
+        <option value="F">F</option>
+        <option value="C">C</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <input type="checkbox" name="hum1" [(ngModel)]="sensors.network[2].sensorId" value="Port 3">
+        {{sensors.network[2].metricName}}
+      </label>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Enter Sensor Name" name="hum1name" [(ngModel)]="sensors.network[2].name"
+             #hum1name="ngModel" (change)="autocheck(2)">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" name="hum1unit" [(ngModel)]="sensors.network[2].unit" #hum1unit="ngModel">
+        <option value="%">%</option>
+        <option value="abs">abs</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <input type="checkbox" name="hum2" [(ngModel)]="sensors.network[3].sensorId" value="Port 4">
+        {{sensors.network[3].metricName}}
+      </label>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Enter Sensor Name" name="hum2name" [(ngModel)]="sensors.network[3].name"
+             #hum2name="ngModel" (change)="autocheck(3)">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" name="hum2unit" [(ngModel)]="sensors.network[3].unit" #hum2unit="ngModel">
+        <option value="%">%</option>
+        <option value="abs">abs</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <input type="checkbox" name="therm1" [(ngModel)]="sensors.network[4].sensorId" value="Port 5">
+        {{sensors.network[4].metricName}}
+      </label>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Enter Sensor Name" name="therm1name" [(ngModel)]="sensors.network[4].name"
+             #therm1name="ngModel" (change)="autocheck(4)">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" name="therm1unit" [(ngModel)]="sensors.network[4].unit" #therm1unit="ngModel">
+        <option value="F">F</option>
+        <option value="C">C</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <input type="checkbox" name="therm2" [(ngModel)]="sensors.network[5].sensorId" value="Port 6">
+        {{sensors.network[5].metricName}}
+      </label>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Enter Sensor Name" name="therm2name" [(ngModel)]="sensors.network[5].name"
+             #therm2name="ngModel" (change)="autocheck(5)">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" name="therm2unit" [(ngModel)]="sensors.network[5].unit" #therm2unit="ngModel">
+        <option value="F">F</option>
+        <option value="C">C</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <input type="checkbox" name="acc" [(ngModel)]="sensors.network[6].sensorId" value="Port 7">
+        {{sensors.network[6].metricName}}
+      </label>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Enter Sensor Name" name="accname" [(ngModel)]="sensors.network[6].name" #accname="ngModel" (change)="autocheck(6)">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" name="accname" [(ngModel)]="sensors.network[6].unit" #accname="ngModel">
+        <option value="mA">mA</option>
+        <option value="A">A</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <input type="checkbox" name="gas" [(ngModel)]="sensors.network[7].sensorId" value="Port 8">
+        {{sensors.network[7].metricName}}
+      </label>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Enter Sensor Name" name="gasname" [(ngModel)]="sensors.network[7].name" #gasname="ngModel" (change)="autocheck(7)">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" name="gasname" [(ngModel)]="sensors.network[7].unit" #gasname="ngModel">
+        <option value="SLM">SLM</option>
+        <option value="CFM">CFM</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <input type="checkbox" name="adc1" [(ngModel)]="sensors.network[8].sensorId" value="Port 9">
+        {{sensors.network[8].metricName}}
+      </label>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Enter Sensor Name" name="adc1name" [(ngModel)]="sensors.network[8].name" #adc1name="ngModel" (change)="autocheck(8)">
+    </div>
+    <div class="col-md-3">
+      <input title="Please enter the convertion equation, using x as the variable name for the sensor reading." type="text" class="form-control" placeholder="Enter Conversion Equation" name="adc1eq" [(ngModel)]="sensors.network[8].expression"
+             #adc1eq="ngModel">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" name="adc1eq" [(ngModel)]="sensors.network[8].unit" #adc1eq="ngModel">
+        <option value="mV">mV</option>
+        <option value="V">V</option>
+        <option value="mA">mA</option>
+        <option value="A">A</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        <input type="checkbox" name="adc2" [(ngModel)]="sensors.network[9].sensorId" value="Port 10">
+        {{sensors.network[9].metricName}}
+      </label>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Enter Sensor Name" name="adc2name" [(ngModel)]="sensors.network[9].name" #adc2name="ngModel" (change)="autocheck(9)">
+    </div>
+    <div class="col-md-3">
+      <input title="Please enter the convertion equation, using x as the variable name for the sensor reading." type="text" class="form-control" placeholder="Enter Conversion Equation" name="adc2eq" [(ngModel)]="sensors.network[9].expression"
+             #adc2eq="ngModel">
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" name="adc2eq" [(ngModel)]="sensors.network[9].unit" #adc2eq="ngModel">
+        <option value="mV">mV</option>
+        <option value="V">V</option>
+        <option value="mA">mA</option>
+        <option value="A">A</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="sensors.isNetwork">
+  <div class="row" *ngFor="let sensor of sensors.network; let ndx = index">
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Sensor Name (port {{ndx + 1}})" name="sn{{ndx}}" [(ngModel)]="sensor.metricName">
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Sensor ID" name="sid{{ndx}}" [(ngModel)]="sensor.name">
+    </div>
+    <div class="col-md-3">
+      <input title="Please enter the convertion equation, using x as the variable name for the sensor reading." type="text" class="form-control" placeholder="Convertion Equation" name="sc{{ndx}}" [(ngModel)]="sensor.expression">
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Unit" name="un{{ndx}}" [(ngModel)]="sensor.unit">
+    </div>
+  </div>
+</div>

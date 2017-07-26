@@ -1,0 +1,72 @@
+<template #content let-c="close" let-d="dismiss">
+  <calculation-modal #calculationModal></calculation-modal>
+  <set-point-modal #setPointModal></set-point-modal>
+  <form #profileForm="ngForm" novalidate>
+    <div class="modal-header">
+      <button type="button" class="close" aria-label="Close" (click)="d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+      <h3 class="modal-title">System Profile</h3>
+    </div>
+
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div class="form-group" [ngClass]="{'has-error': systemType.errors && (systemType.dirty || systemType.touched)}">
+          <label for="systemType">System Type</label>
+          <select name="systemType" class="form-control" [(ngModel)]="profile.systemType" #systemType="ngModel" required>
+            <option value="HEATING">Heating</option>
+            <option value="VENTILATION">Ventilation</option>
+            <option value="AIR_CONDITIONING">Air Conditioning</option>
+            <option value="REFRIGERATION">Refrigeration</option>
+            <option value="OTHER">Other</option>
+          </select>
+        </div>
+
+        <edit-sensor-network [sensors]="sensors"></edit-sensor-network>
+      </div>
+
+      <!-- -->
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8">
+            <h4>Create Calculations</h4>
+          </div>
+          <div class="col-md-4"><span class="add-btn pull-right" (click)="addCalc()">Add</span></div>
+        </div>
+        <div>
+          <div *ngFor="let calculation of calculations" class="row bottom-line">
+            <div class="col-md-4">{{calculation.variableName}}</div>
+            <div class="col-md-5">{{calculation.expression}}</div>
+            <div class="col-md-1">{{calculation.unit}}</div>
+            <div class="col-md-2">
+              <span class="edit-btn pull-left" (click)="editCalc(calculation)">Edit</span> <span class="remove-btn pull-right"
+                (click)="deleteCalc(calculation)">Remove</span>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 20px">
+          <div class="col-md-8">
+            <h4>Create Set Points</h4>
+          </div>
+          <div class="col-md-4"><span class="add-btn pull-right" (click)="addSetP()">Add</span></div>
+        </div>
+        <div *ngFor="let setP of setPoints" class="row bottom-line">
+          <div class="col-md-3">{{setP.parameterName}}</div>
+          <div class="col-md-1">{{setP.comparisonOperator | comparisonOperator}}</div>
+          <div class="col-md-2">{{setP.limit}}</div>
+          <div class="col-md-4">{{setP.warningMessage}}</div>
+          <div class="col-md-2">
+            <span class="edit-btn pull-left" (click)="editSetP(setP)">Edit</span> <span class="remove-btn pull-right" (click)="deleteSetP(setP)">Remove</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger pull-left" *ngIf="profile.id && profile.id.length > 0" (click)="delete()">Delete</button>
+      <button type="button" class="btn btn-default" (click)="c()">Close</button>
+      <button type="button" class="btn btn-primary" [disabled]="!profileForm.form.valid" (click)="save()">Save</button>
+    </div>
+  </form>
+</template>

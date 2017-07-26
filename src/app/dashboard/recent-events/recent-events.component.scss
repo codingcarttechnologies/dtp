@@ -1,0 +1,12 @@
+tr:not(:last-child) {
+  border: 1px solid #ddd;
+}
+
+tr {
+  cursor: pointer;
+}
+
+img {
+  min-width: 35px;
+  min-height: 35px;
+}

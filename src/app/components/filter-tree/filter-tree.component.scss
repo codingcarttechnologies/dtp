@@ -1,0 +1,41 @@
+.title {
+  padding: 0 10px 0 10px;
+  margin-bottom: 4px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.title-count {
+  float: right;
+}
+
+.option {
+  width: 95%;
+  cursor: pointer;
+}
+
+.option:hover {
+  color: #6e7680;
+}
+
+.option-slider {
+  margin-bottom: 10px;
+	overflow-y: hidden;
+
+	transition: .3s all cubic-bezier(0.730, -0.485, 0.145, 1.620);
+}
+
+.option-slider.open {
+	max-height: 1000px;
+}
+
+.option-slider.closed {
+	max-height: 0;
+}
+
+img {
+  height: 18px;
+}

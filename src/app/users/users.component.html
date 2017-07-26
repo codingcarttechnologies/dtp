@@ -1,0 +1,45 @@
+<div class="dashboard userBoard">
+  <div id="main" class="container">
+    <div class="row" *ngIf="users.length>0">
+      <div class="col-sm-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Organization</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{user.userName}}</td>
+              <td>
+                <div *ngIf="user.pending==true">
+                  <inline-edit  [text]="user.oemName" (edit)="changeOemName($event, user)" [organization]="Organization"></inline-edit>
+                </div>
+                <div *ngIf="user.pending==false">
+                  {{user.oemName}}
+                </div>
+              </td>
+              <td>{{user.email}}</td>
+              <td>
+                {{(user.pending?'Pending':'Registered')}}
+              </td>
+              <td>
+                <div *ngIf="user.pending==true">
+                  <button class="btn btn-success" (click)="approveUser(user)" type="button">Approve</button>
+                  <button class="btn btn-danger" (click)="deleteUser(user)" type="button">Delete</button>
+                </div>
+                <div *ngIf="user.pending==false">
+                  <button class="btn btn-danger" (click)="deleteUser(user)" type="button">Delete</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

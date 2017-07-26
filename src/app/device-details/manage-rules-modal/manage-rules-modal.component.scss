@@ -1,0 +1,13 @@
+h4 {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.bottom-line {
+  border-bottom: 1px solid darkgray;
+  padding: 5px;
+}
+
+.cond-row:nth-child(even) {
+  background-color: #f6f6f6;
+}

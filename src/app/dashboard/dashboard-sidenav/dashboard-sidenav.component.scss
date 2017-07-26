@@ -1,0 +1,76 @@
+#dashboard-sidenav {
+	white-space: nowrap;
+  overflow: hidden;
+
+	.closebtn:hover {
+		cursor: pointer;
+	}
+
+  opacity: 0.9;
+  *{
+    color: white;
+  }
+  h3,
+  h4 {
+    margin-left: 15px;
+  }
+
+  ul {
+    padding-right: 15px;
+    li {
+      list-style-type: circle;
+      .glyphicon {
+        padding-right: 10px;
+      }
+    }
+  }
+  .glyphicon-menu-up,
+  .glyphicon-menu-down {
+    padding-right: 5px;
+  }
+  .manufacturer {
+    list-style-type: none !important;
+    padding-right: 15px;
+  }
+  .searchIcon {
+    position: absolute;
+    right: 20px;
+    color: #6e7680;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  input[type="text"] {
+    background-color: #4f5a65;
+    color: lightgray;
+    padding: 5px;
+    border: none;
+    &:focus {
+      color: white;
+    }
+    ;
+    &:focus+span {
+      color: white;
+    }
+  }
+}
+
+.expanded {
+  position: fixed !important;
+  left: 0 !important;
+  width: 250px !important;
+}
+
+.active .open {
+      display: none;
+    }
+
+  .active .close {
+      display: inline;
+  }
+
+ngb-accordion {
+  h4 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

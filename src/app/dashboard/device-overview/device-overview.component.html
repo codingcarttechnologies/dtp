@@ -1,0 +1,37 @@
+<manage-profiles-modal #profilesModal></manage-profiles-modal>
+<edit-profile-modal #editProfilesModal></edit-profile-modal>
+<add-device-modal #addDeviceModal></add-device-modal>
+<div class="panel">
+  <div class="panel-heading clearfix no-padding content-fluid">
+    <div class="col-md-5">
+      <h3 class="panel-title pull-left">DEVICES</h3>
+    </div>
+    <div class="col-md-7">
+      <div class="form-group pull-right">
+        <div class="input-group">
+          <a title="Hide Inactive Devices" class="btn btn-default glyphicon glyphicon-eye-open blueGrayBg whiteTxt" style="margin-top: -1px; float: left" *ngIf="devicesService.viewInactive" (click)="toggleInactive()"></a>
+          <a title="View Inactive Devices" class="btn btn-default glyphicon glyphicon-eye-close blueGrayBg whiteTxt" style="margin-top: -1px; float: left" *ngIf="!devicesService.viewInactive" (click)="toggleInactive()"></a>
+
+          <a title="Filter/Search" class="btn btn-default glyphicon glyphicon-menu-hamburger blueGrayBg whiteTxt" style="margin-top: -1px; float: left" (click)="onToggleFilteringOptions()"></a>
+          <select title="Select View Grouping" id="sorter" name="sorter" class="form-control lopsided-selector blueGrayBg whiteTxt" style="width: 150px" [(ngModel)]="groupBy">
+            <option value="organization" selected>Organization</option>
+            <option value="type">Type</option>
+            <option value="condition">Condition</option>
+          </select>
+          <div class="input-group-btn" style="display: inline-block">
+            <!--TODO: review formatting inline-->
+            <a title="Switch to List View" class="btn btn-default glyphicon glyphicon-th-list blueGrayBg whiteTxt pull-left borderRadLeft" style="margin-top: -1px" *ngIf="!listView" (click)="toggleView()"></a>
+            <a title="Switch to Card View" class="btn btn-default glyphicon glyphicon-th-large blueGrayBg whiteTxt" style="margin-top: -1px" *ngIf="listView" (click)="toggleView()"></a>
+            <a title="Create/Edit System Profiles" *ngIf="authService.isDexenAdmin" class="btn btn-default glyphicon glyphicon-cog blueGrayBg whiteTxt borderRadRight" style="margin-top: -1px" (click)="manageProfiles()"></a>
+            <a style="margin-left: 10px" class="btn btn-primary btn-sm devices-button borderRad" (click)="addDevice()">Add Device</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <loading [while]="(devices | async)?.length == 0"></loading>
+  <div class="panel-body no-padding" *ngIf="(devices | async)?.length != 0">
+    <device-group [list-view]="listView" [group-by]="groupBy"></device-group>
+  </div>
+</div>

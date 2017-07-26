@@ -1,0 +1,6 @@
+<div *ngFor="let tb of tree.branches; let i = index;" style="white-space: normal">
+  <div class="title" (click)="panelChange(i)"><i class="fa fa-chevron-down" aria-hidden="true" *ngIf="activePanel != i"></i><i class="fa fa-chevron-up" aria-hidden="true"  *ngIf="activePanel == i"></i> {{tb.title}} <span class=title-count>{{tb.numberElements}}</span></div>
+  <div class="option-slider" [ngClass]="{'closed':activePanel != i, 'open':activePanel == i}">
+    <div *ngFor="let op of tb.treeOptions" class="option" (click)="toggleCheck(op)">&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa" [ngClass]="{'fa-dot-circle-o': op.selected, 'fa-circle-o': !op.selected}" aria-hidden="true"></i> &nbsp; <img *ngIf="tb.title == 'Type'" src="/assets/images/SM_{{op.label}}.png" />   {{op.label}} <span class="title-count">{{op.numberElements}}</span></div>
+  </div>
+</div>
